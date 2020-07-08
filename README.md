@@ -4,7 +4,7 @@
 This is homework 10, a program to generate an html file to list members on a team.
 
 <img src="./assets/command_line.png">
-<img src="./assets/output.png">
+<img src="./assets/output.PNG">
 
 ## Table of Contents 
 [Installation](#installation)
