@@ -31,7 +31,7 @@ This is licensed under the [MIT license](https://choosealicense.com/licenses/mit
 Feel free to contribute
 
 ## Tests
-No tests at the moment
+In the folder with app.js run "npm test" to see the tests.
 
 ## Questions
 GitHub: https://github.com/tober65
