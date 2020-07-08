@@ -10,10 +10,76 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const questions = [
+    {
+        type: "input",
+        message: "What is the employee's name?",
+        name: "name",
+    },
+    {
+        type: "input",
+        message: "What is the employee's ID?",
+        name: "id",
+    },
+    {
+        type: "input",
+        message: "What is the employee's email?",
+        name: "email",
+    }
+];
+
+const employeeList = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+function promptForWorker(workerType) {
+    const allQuestions = [...questions];
 
+    switch (workerType) {
+        case "Manager":
+            allQuestions.push({
+                type: "input",
+                message: "What is the employee's office number?",
+                name: "office",
+            });
+            break;
+        case "Engineer":
+            allQuestions.push({
+                type: "input",
+                message: "What is the employee's GitHub username?",
+                name: "github",
+            });
+            break;
+        case "Intern":
+            allQuestions.push({
+                type: "input",
+                message: "What is the employee's school?",
+                name: "name",
+            });
+            break;
+        default:
+            break;
+    }
+
+    allQuestions.push({
+        type: "list",
+        message: "Do you want to add another employee?",
+        name: "employeeType",
+        choices: [
+          "Engineer",
+          "Intern",
+          "None"
+        ],
+      })
+
+    inquirer.prompt(allQuestions).then(function (answers) {
+        if (answers.employeeType !== "None") {
+            promptForWorker(answers.employeeType);
+        }
+    });
+}
+
+promptForWorker("Manager");
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
